@@ -1,9 +1,4 @@
 (function () {
-
-	var demo = 'hello11';
-	demo + 'yes';
-	console.log(demo);
-
 	var emailLink = document.querySelector('.email');
 	emailLink.addEventListener('click', noSpam, false);
 	
