@@ -1,5 +1,3 @@
-$main-width: 400px;
-
 @font-face {
     font-family: 'Colfax Medium';
     font-style: normal;
@@ -14,60 +12,60 @@ $main-width: 400px;
     src: local('Colfax Regular'), url('../../fonts/Colfax-Regular.woff') format('woff');
 }
 
-html{
-    font-family: Colfax Regular, Helvetica, Arial, sans-serif;
-    font-size: 100%;
-    text-rendering: optimizeLegibility;
-    -webkit-font-smoothing: antialiased;
-    color: #001c00;
-}
+// Variables
+$main-width: 400px;
+$type-color: #1c1c1c;
+$border-color: #1c1c1c;
 
 body {
     background-color: #fbfaf9;
+    color: $type-color;
+    font-family: Colfax Regular, Helvetica, Arial, sans-serif;
+    font-size: 100%;
     margin: 0;
     padding: 0;
+    text-rendering: optimizeLegibility;
+    -webkit-font-smoothing: antialiased;
 }
 
 // Typography
 a, a:hover, visited {
-    color: #001c00;
+    color: $type-color;
 }
 
 h1 {
     font-family: Colfax Medium, Helvetica, Arial, sans-serif;
     font-size: 60px;
-    line-height: 50px;
     font-weight: 500;
-    margin: 0;
     letter-spacing: -2px;
+    line-height: 50px;
+    margin: 0;
 }
 
 h2 {
-    margin-top: 5px;
     margin-bottom: 5px;
+    margin-top: 5px;
 }
 
 // Layout
-main {
+.wrap {
     margin: 30px auto 20px;
     max-width: $main-width;
     min-width: 180px;
 }
 
-section.header {
+.header {
     padding: 0 10px 0 10px;
 
     @media (min-width: $main-width + 20) {
-        padding: 0 0 0 0;
+        padding: 0;
     }
-
 }
 
-section.links {
+.links {
     position: relative;
     margin-top: 10px;
-    border-top: 1px solid #000;
-    background-color: #fbfaf9;
+    border-top: 1px solid $border-color;
 
     ul {
         padding: 0;
@@ -78,23 +76,18 @@ section.links {
             padding: 0;
 
             a {
-                display: block;
-                padding: 20px 0 15px 50px;
-                
-                border-bottom: 1px solid #000;
-
-                font-family: Colfax Medium, Helvetica, Arial, sans-serif;
-                font-size: 12px;
-                letter-spacing: 1px;
-                text-transform: uppercase;
-                font-weight: 500;
-
-                text-decoration: none;
-
                 background-position: 10px center;
                 background-repeat:no-repeat;
                 background-size: 25px auto;
-
+                border-bottom: 1px solid $border-color;
+                display: block;
+                font-family: Colfax Medium, Helvetica, Arial, sans-serif;
+                font-size: 12px;
+                font-weight: 500;
+                letter-spacing: 1px;
+                padding: 20px 0 15px 50px;
+                text-decoration: none;
+                text-transform: uppercase;
                 transition: background-color 500ms ease-in-out;
 
                 &:hover { 
