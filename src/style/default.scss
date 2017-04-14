@@ -1,26 +1,15 @@
-@font-face {
-    font-family: 'Colfax Medium';
-    font-style: normal;
-    font-weight: normal;
-    src: local('Colfax Medium'), url('../../fonts/Colfax-Medium.woff') format('woff');
-}
-
-@font-face {
-    font-family: 'Colfax Regular';
-    font-style: normal;
-    font-weight: normal;
-    src: local('Colfax Regular'), url('../../fonts/Colfax-Regular.woff') format('woff');
-}
+@import url('https://fonts.googleapis.com/css?family=Roboto');
 
 // Variables
 $main-width: 400px;
 $type-color: #424141;
 $border-color: #d6d6d0;
+$font-stack: 'Roboto', sans-serif;;
 
 body {
     background-color: #f5f5f5;
     color: $type-color;
-    font-family: Colfax Regular, Helvetica, Arial, sans-serif;
+    font-family: $font-stack;
     font-size: 100%;
     margin: 0;
     padding: 0;
@@ -34,17 +23,21 @@ a, a:hover, visited {
 }
 
 h1 {
-    font-family: Colfax Medium, Helvetica, Arial, sans-serif;
-    font-size: 60px;
-    font-weight: 500;
-    letter-spacing: -2px;
-    line-height: 50px;
+    font-weight: bold;
+    font-style: normal;
+    font-size: 2.407rem;
+    line-height: 1em;
+    letter-spacing: 0;
     margin: 0;
+    padding-bottom: 10px;
 }
 
 h2 {
-    margin-bottom: 5px;
-    margin-top: 5px;
+    margin-bottom: 10px;
+    margin-top: 10px;
+
+    font-size: 1.429rem;
+
 }
 
 // Layout
@@ -81,10 +74,8 @@ h2 {
                 background-size: 25px auto;
                 border-bottom: 1px solid $border-color;
                 display: block;
-                font-family: Colfax Medium, Helvetica, Arial, sans-serif;
-                font-size: 12px;
-                font-weight: 500;
-                letter-spacing: 1px;
+                font-size: 0.75em;
+                letter-spacing: 0.03em;
                 padding: 20px 0 15px 50px;
                 text-decoration: none;
                 text-transform: uppercase;
