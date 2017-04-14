@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css?family=Roboto');
+@import url('https://fonts.googleapis.com/css?family=Roboto:400,500');
 
 // Variables
 $main-width: 400px;
@@ -24,8 +24,7 @@ a, a:hover, visited {
 
 h1 {
     font-size: 2.407em;
-    font-style: normal;
-    font-weight: bold;
+    font-weight: 500;
     line-height: 1em;
     letter-spacing: 0;
     margin: 0 0 10px 0;
@@ -33,6 +32,8 @@ h1 {
 
 h2 {
     font-size: 1.429em;
+    font-weight: 500;
+    line-height: 1.1em;
     margin-bottom: 10px;
     margin-top: 10px;   
 }
@@ -72,6 +73,7 @@ h2 {
                 border-bottom: 1px solid $border-color;
                 display: block;
                 font-size: 0.75em;
+                font-weight: 400;
                 letter-spacing: 0.03em;
                 padding: 20px 0 15px 50px;
                 text-decoration: none;
