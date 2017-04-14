@@ -23,21 +23,18 @@ a, a:hover, visited {
 }
 
 h1 {
-    font-weight: bold;
+    font-size: 2.407em;
     font-style: normal;
-    font-size: 2.407rem;
+    font-weight: bold;
     line-height: 1em;
     letter-spacing: 0;
-    margin: 0;
-    padding-bottom: 10px;
+    margin: 0 0 10px 0;
 }
 
 h2 {
+    font-size: 1.429em;
     margin-bottom: 10px;
-    margin-top: 10px;
-
-    font-size: 1.429rem;
-
+    margin-top: 10px;   
 }
 
 // Layout
@@ -56,21 +53,21 @@ h2 {
 }
 
 .links {
-    position: relative;
-    margin-top: 10px;
     border-top: 1px solid $border-color;
-
+    margin-top: 10px;
+    position: relative;
+    
     ul {
-        padding: 0;
-        margin: 0;
         list-style-type: none;
+        margin: 0;
+        padding: 0;
 
         li {
             padding: 0;
 
             a {
                 background-position: 10px center;
-                background-repeat:no-repeat;
+                background-repeat: no-repeat;
                 background-size: 25px auto;
                 border-bottom: 1px solid $border-color;
                 display: block;
