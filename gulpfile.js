@@ -22,9 +22,9 @@ gulp.task('scripts', function() {
 
 // Apply gzip compression
 gulp.task('compress', function() {
-    gulp.src('./dev/scripts/*.js')
+    gulp.src('dist/style/default.css')
     .pipe(gzip())
-    .pipe(gulp.dest('./public/scripts'));
+    .pipe(gulp.dest('dist/style'));
 });
 
 
