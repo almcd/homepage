@@ -24,7 +24,8 @@ gulp.task('scripts', function() {
 gulp.task('compress', function() {
     gulp.src('dist/style/default.css')
     .pipe(gzip())
-    .pipe(gulp.dest('dist/style'));
+    .pipe(gulp.dest('dist/style'))
+    .pipe(livereload());
 });
 
 
