@@ -2,6 +2,7 @@ var gulp = require('gulp');
 var sass = require('gulp-sass');
 var uglify = require('gulp-uglify');
 var livereload = require('gulp-livereload');
+var gzip = require('gulp-gzip');
 
 // Compile and minify SASS
 gulp.task('css', function () {
@@ -19,10 +20,19 @@ gulp.task('scripts', function() {
         .pipe(livereload());
 });
 
+// Apply gzip compression
+gulp.task('compress', function() {
+    gulp.src('./dev/scripts/*.js')
+    .pipe(gzip())
+    .pipe(gulp.dest('./public/scripts'));
+});
+
+
 gulp.task('watch', function () {
     livereload.listen();
     gulp.watch('src/style/default.scss', ['css']);
-    gulp.watch('src/js/default.js', ['scripts']);
+    gulp.watch('src/js/default.js', ['scripts'])
+    gulp.watch('dist/style/default.css', ['compress']);
 });
 
-gulp.task('default', ['css', 'scripts']);
+gulp.task('default', ['css', 'scripts', 'compress']);
