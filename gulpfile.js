@@ -4,6 +4,12 @@ var uglify = require('gulp-uglify');
 var livereload = require('gulp-livereload');
 var gzip = require('gulp-gzip');
 
+// Copy index file
+gulp.task('copyindex', function() {
+   gulp.src('src/index.htm')
+   .pipe(gulp.dest('./dist'));
+});
+
 // Compile and minify SASS
 gulp.task('css', function () {
   return gulp.src('src/style/default.scss')
@@ -31,9 +37,10 @@ gulp.task('compress', function() {
 
 gulp.task('watch', function () {
     livereload.listen();
+    gulp.watch('src/index.htm', ['copyindex']);
     gulp.watch('src/style/default.scss', ['css']);
     gulp.watch('src/js/default.js', ['scripts'])
     gulp.watch('dist/style/default.css', ['compress']);
 });
 
-gulp.task('default', ['css', 'scripts', 'compress']);
+gulp.task('default', ['copyindex', 'css', 'scripts', 'compress']);
