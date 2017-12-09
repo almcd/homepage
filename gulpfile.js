@@ -2,7 +2,6 @@ var gulp = require('gulp');
 var sass = require('gulp-sass');
 var uglify = require('gulp-uglify');
 var livereload = require('gulp-livereload');
-var gzip = require('gulp-gzip');
 
 // Copy index file
 gulp.task('copyindex', function() {
@@ -26,21 +25,11 @@ gulp.task('scripts', function() {
         .pipe(livereload());
 });
 
-// Apply gzip compression
-gulp.task('compress', function() {
-    gulp.src('dist/style/default.css')
-    .pipe(gzip())
-    .pipe(gulp.dest('dist/style'))
-    .pipe(livereload());
-});
-
-
 gulp.task('watch', function () {
     livereload.listen();
     gulp.watch('src/index.htm', ['copyindex']);
     gulp.watch('src/style/default.scss', ['css']);
-    gulp.watch('src/js/default.js', ['scripts'])
-    gulp.watch('dist/style/default.css', ['compress']);
+    gulp.watch('src/js/default.js', ['scripts']);
 });
 
-gulp.task('default', ['copyindex', 'css', 'scripts', 'compress']);
+gulp.task('default', ['copyindex', 'css', 'scripts']);
