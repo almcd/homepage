@@ -1,7 +1,7 @@
 var gulp = require('gulp');
 var sass = require('gulp-sass');
 var uglify = require('gulp-uglify');
-var livereload = require('gulp-livereload');
+var browserSync = require('browser-sync').create();
 
 // Copy index file
 gulp.task('copyindex', function() {
@@ -14,7 +14,7 @@ gulp.task('css', function () {
   return gulp.src('src/style/default.scss')
     .pipe(sass({outputStyle: 'compressed'}).on('error', sass.logError))
     .pipe(gulp.dest('dist/style'))
-    .pipe(livereload());
+    .pipe(browserSync.stream());
 });
 
 // Minify JavaScript
@@ -22,14 +22,27 @@ gulp.task('scripts', function() {
     return gulp.src('src/js/default.js')
         .pipe(uglify())
         .pipe(gulp.dest('dist/js'))
-        .pipe(livereload());
+        .pipe(browserSync.stream());
 });
 
-gulp.task('watch', function () {
-    livereload.listen();
-    gulp.watch('src/index.htm', ['copyindex']);
-    gulp.watch('src/style/default.scss', ['css']);
-    gulp.watch('src/js/default.js', ['scripts']);
+// Server for local development
+gulp.task('serve', function() {
+  // Init browserSync
+  browserSync.init({
+    open: true,
+    server : {
+      baseDir : 'dist',
+      index : "index.htm"
+    }  
+  });
+
+  // Watch files
+  gulp.watch('src/index.htm', ['copyindex']);
+  gulp.watch('src/style/default.scss', ['css']);
+  gulp.watch('src/js/default.js', ['scripts']);
+
+  gulp.watch("dist/*.htm").on('change', browserSync.reload);
 });
 
-gulp.task('default', ['copyindex', 'css', 'scripts']);
+gulp.task('deploy', ['copyindex', 'css', 'scripts']);
+gulp.task('default', ['deploy', 'serve']);
