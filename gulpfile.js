@@ -1,11 +1,11 @@
 var gulp = require('gulp');
-var sass = require('gulp-sass');
+var sass = require('gulp-sass')(require('sass'));
 var uglify = require('gulp-uglify');
 var browserSync = require('browser-sync').create();
 
 // Copy index file
 gulp.task('copyindex', function() {
-   gulp.src('src/index.htm')
+    return gulp.src('src/index.htm')
    .pipe(gulp.dest('./dist'));
 });
 
@@ -37,12 +37,12 @@ gulp.task('serve', function() {
   });
 
   // Watch files
-  gulp.watch('src/index.htm', ['copyindex']);
-  gulp.watch('src/style/default.scss', ['css']);
-  gulp.watch('src/js/default.js', ['scripts']);
+  gulp.watch('src/index.htm', gulp.series('copyindex'));
+  gulp.watch('src/style/default.scss', gulp.series('css'));
+  gulp.watch('src/js/default.js', gulp.series('scripts'));
 
   gulp.watch("dist/*.htm").on('change', browserSync.reload);
 });
 
-gulp.task('deploy', ['copyindex', 'css', 'scripts']);
-gulp.task('default', ['deploy', 'serve']);
+gulp.task('deploy', gulp.series('copyindex', 'css', 'scripts'));
+gulp.task('default', gulp.series('deploy', 'serve'));
