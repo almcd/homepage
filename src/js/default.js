@@ -3,7 +3,7 @@
 	emailLink.addEventListener('click', noSpam, false);
 
 	var social = document.querySelector('.links');
-	social.addEventListener('click', gaEvent, false);
+	social.addEventListener('click', analyticsEvent, false);
 
 	function noSpam(evt) {
 		evt.preventDefault();
@@ -13,8 +13,12 @@
 		window.location = locationstring;
 	}
 
-	function gaEvent (evt) {
+	function analyticsEvent (evt) {
 		var eventLabel = evt.target.id;
-		ga('send', 'event', 'link', 'click', eventLabel);
+		window.goatcounter.count({
+			path:  'link-click',
+			title: eventLabel,
+			event: true,
+		});
 	}
 }());
